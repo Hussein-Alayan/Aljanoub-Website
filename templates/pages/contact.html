@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ALJANOUB</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-dark text-white py-5 mb-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Contact Us</h1>
+            <p class="lead">Get in touch with us for reservations, inquiries, or feedback</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Information -->
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Get In Touch</h2>
+                    <div class="mb-4">
+                        <h3 class="h5"><i class="bi bi-geo-alt-fill me-2 text-primary"></i>Address</h3>
+                        <p class="ms-4">Main Street<br>Tebnin, South Lebanon</p>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="h5"><i class="bi bi-telephone-fill me-2 text-primary"></i>Phone</h3>
+                        <p class="ms-4">+961 1 234 567</p>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="h5"><i class="bi bi-envelope-fill me-2 text-primary"></i>Email</h3>
+                        <p class="ms-4">info@aljanoub.com</p>
+                    </div>
+                    <div class="mb-4">
+                        <h3 class="h5"><i class="bi bi-clock-fill me-2 text-primary"></i>Hours</h3>
+                        <p class="ms-4">
+                            Monday - Sunday<br>
+                            11:00 AM - 10:00 PM
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="mb-4">Send Us a Message</h2>
+                            <form action="{{ url_for('contact') }}" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="ratio ratio-21x9">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13335.449437761639!2d35.38333!3d33.18333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151e97ca80dc4d0d%3A0x9c6e3fcf7498b9ea!2sTebnine!5e0!3m2!1sen!2slb!4v1647789012345!5m2!1sen!2slb" 
+                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+       <div id="footer"></div>
+<script>
+    // Load navbar
+    fetch('../partials/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        });
+
+    // Load footer
+    fetch('../partials/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+</script>
+
+
+    <script>
+        // Press 'Alt + A' to access admin page
+        document.addEventListener('keydown', function(e) {
+            if (e.altKey && e.key === 'a') {
+                window.location.href = 'admin-login.html';
+            }
+        });
+    </script>
+</body>
+</html>

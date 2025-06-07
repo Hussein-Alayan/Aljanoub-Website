@@ -1,0 +1,270 @@
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    /* Header/Navigation */
+    .navbar-brand img {
+        max-width: 120px; /* Smaller logo on mobile */
+    }
+    
+    /* General text adjustments */
+    h1 {
+        font-size: 2rem !important;
+    }
+    h2 {
+        font-size: 1.75rem !important;
+    }
+    h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Container padding */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+    }
+    footer .col-md-6 {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Small devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Adjust grid layouts */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    .col-md-6 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+/* General responsive images */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive tables */
+@media (max-width: 767.98px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Menu page specific */
+@media (max-width: 767.98px) {
+    .menu-item {
+        text-align: center;
+    }
+    .menu-item img {
+        margin-bottom: 1rem;
+    }
+    .menu-item .price {
+        margin-top: 0.5rem;
+    }
+}
+
+/* About page specific */
+@media (max-width: 767.98px) {
+    .about-section {
+        text-align: center;
+    }
+    .about-section img {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Contact page specific */
+@media (max-width: 767.98px) {
+    .contact-form {
+        padding: 1rem;
+    }
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* Reservation form specific */
+@media (max-width: 767.98px) {
+    .reservation-form {
+        padding: 1rem;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Gallery specific */
+@media (max-width: 767.98px) {
+    .gallery-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Utility classes for spacing */
+@media (max-width: 767.98px) {
+    .mobile-mt-3 {
+        margin-top: 1rem !important;
+    }
+    .mobile-mb-3 {
+        margin-bottom: 1rem !important;
+    }
+    .mobile-py-3 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+}
+
+/* Navigation improvements */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Modal responsiveness */
+@media (max-width: 575.98px) {
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Mobile padding and spacing adjustments */
+@media (max-width: 767.98px) {
+    /* General section padding */
+    section {
+        padding: 3rem 0;
+    }
+
+    /* Container padding */
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* Card and content boxes */
+    .card, .content-box {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Menu items spacing */
+    .menu-item {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Section headings */
+    .section-heading {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    /* Footer adjustments */
+    footer {
+        padding: 3rem 0 2rem !important;
+    }
+    
+    footer .col-lg-3 {
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Navigation padding */
+    .navbar-collapse {
+        padding: 1.5rem;
+    }
+    
+    .nav-item {
+        padding: 0.5rem 0;
+    }
+
+    /* Form elements */
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+    
+    input.form-control,
+    textarea.form-control {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.75rem 1.5rem;
+    }
+
+    /* List items */
+    .list-group-item {
+        padding: 1rem 1.25rem;
+    }
+
+    /* Grid row spacing */
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1.5rem;
+    }
+
+    /* Utility spacing classes */
+    .mobile-p-0 { padding: 0 !important; }
+    .mobile-p-1 { padding: 0.5rem !important; }
+    .mobile-p-2 { padding: 1rem !important; }
+    .mobile-p-3 { padding: 1.5rem !important; }
+    .mobile-p-4 { padding: 2rem !important; }
+    .mobile-p-5 { padding: 3rem !important; }
+
+    .mobile-px-3 { 
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    .mobile-py-3 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    /* Content spacing */
+    p {
+        margin-bottom: 1.25rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 1rem;
+    }
+} 

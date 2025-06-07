@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Add these styles to your admin dashboard */
+        .menu-thumbnail {
+            width: 60px !important;
+            height: 60px !important;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .table td {
+            vertical-align: middle;
+            padding: 0.5rem;
+        }
+
+        .table th {
+            padding: 0.5rem;
+        }
+
+        /* Make table more compact */
+        .table {
+            font-size: 0.9rem;
+        }
+
+        /* Adjust modal image preview */
+        #imagePreview {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="#menu-items">
+                                <i class="bi bi-list-ul"></i>
+                                Menu Items
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" id="logoutBtn">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1>Menu Management</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                        <i class="bi bi-plus-lg"></i> Add New Item
+                    </button>
+                </div>
+
+                <!-- Menu Items Table -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px">Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th style="width: 100px">Price</th>
+                                <th style="width: 80px">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menuItemsTable">
+                            <!-- Items will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Menu Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm">
+                        <div class="mb-3">
+                            <label class="form-label">Item Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" name="category" required>
+                                <option value="appetizers">Appetizers</option>
+                                <option value="main-courses">Main Courses</option>
+                                <option value="desserts">Desserts</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="number" class="form-control" name="price" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" name="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" name="image" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/menuData.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script>
+        // Initialize menu manager
+        const menuManager = new MenuManager();
+
+        // Display menu items in table
+        function displayMenuItems() {
+            const tableBody = document.getElementById('menuItemsTable');
+            const items = menuManager.getMenuItems();
+            
+            tableBody.innerHTML = items.map(item => `
+                <tr>
+                    <td><img src="${item.image}" alt="${item.name}" class="menu-thumbnail"></td>
+                    <td>${item.name}</td>
+                    <td>${item.category}</td>
+                    <td>${utils.formatPrice(item.price)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="handleDelete(${item.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Handle item deletion
+        function handleDelete(id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                menuManager.deleteItem(id);
+                displayMenuItems();
+                utils.showAlert('Item deleted successfully!', 'danger');
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('addItemForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            try {
+                const imageBase64 = await utils.handleImageUpload(formData.get('image'));
+                
+                const newItem = {
+                    name: formData.get('name'),
+                    category: formData.get('category'),
+                    price: parseFloat(formData.get('price')),
+                    description: formData.get('description'),
+                    image: imageBase64
+                };
+
+                menuManager.addItem(newItem);
+                displayMenuItems();
+                this.reset();
+                document.querySelector('#addItemModal .btn-close').click();
+                utils.showAlert('Item added successfully!', 'success');
+            } catch (error) {
+                utils.showAlert('Error adding item', 'danger');
+            }
+        });
+
+        // Initialize display
+        displayMenuItems();
+
+        // Add this to your existing JavaScript
+        document.querySelector('input[name="image"]').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html> 
