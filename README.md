@@ -1,4 +1,4 @@
-# ALJANOUB Restaurant Menu Management System
+# ALJANOUB Restaurant Menu
 
 A modern, responsive web application for managing and displaying a restaurant menu, built with Flask, Bootstrap, JavaScript, PHP, and MySQL.
 
