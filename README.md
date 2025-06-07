@@ -1,4 +1,4 @@
-# ALJANOUB Restaurant Menu Management System
+# ALJANOUB Restaurant Menu
 
 A modern, responsive web application for managing and displaying a restaurant menu, built with Flask, Bootstrap, and JavaScript.
 
@@ -19,7 +19,7 @@ A modern, responsive web application for managing and displaying a restaurant me
 
 ## Overview
 
-**ALJANOUB Restaurant Menu Management System** is a web app for restaurants to showcase their menu, share their story, and manage menu items through an admin dashboard. It is designed for both customers and restaurant staff, with a focus on Lebanese cuisine and community.
+**ALJANOUB Restaurant Menu** is a web app for restaurants to showcase their menu, share their story, and manage menu items through an admin dashboard. It is designed for both customers and restaurant staff, with a focus on Lebanese cuisine and community.
 
 ---
 
